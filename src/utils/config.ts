@@ -34,4 +34,4 @@ function isConfig(config: any): config is Configuration {
   return hasRoot && (hasSingleTarget || hasTargets);
 }
 
-const CONFIG_FILENAME = '.shifterrc';
+export const CONFIG_FILENAME = '.shifterrc';
