@@ -1,10 +1,10 @@
 {
-  "name": "env-switcher",
+  "name": "env-shifter",
   "version": "0.0.1",
   "description": "A library that switches the contents of .env files",
   "main": "./lib/index.js",
   "types": "./lib/main.d.ts",
-  "repository": "git@github.com:EcksDy/env-switcher.git",
+  "repository": "git@github.com:EcksDy/env-shifter.git",
   "author": "EcksDy <ecksdy@gmail.com>",
   "license": "MIT",
   "private": false,

@@ -1,13 +1,13 @@
-import { SWITCH_DICT } from './switches';
-import { Configuration, Tolerance, Target, Strategy, Presets } from '../types';
+import { SWITCH_DICT } from './shift-strategies';
+import { Configuration, Tolerance, Target, Scope, Presets } from '../types';
 import { getConfig } from '../utils';
 import { join } from 'path';
 
-export class EnvSwitcher {
+export class EnvShifter {
   protected readonly root: string;
   protected readonly tolerance: Tolerance = 'lenient';
-  protected readonly strategy: Strategy = 'all';
-  private readonly switchFn: (this: EnvSwitcher, target: string, source: string) => void;
+  protected readonly scope: Scope = 'all';
+  private readonly switchFn: (this: EnvShifter, target: string, source: string) => void;
   protected readonly targets: Target[];
 
   private constructor(config: Configuration) {
@@ -38,16 +38,16 @@ export class EnvSwitcher {
 
   /**
    * If an config object is provided, the root property must be an absolute path.
-   * If a path to .switcherrc is provided then the root will be resolved from the path + root property of the config file.
+   * If a path to .shifterrc is provided then the root will be resolved from the path + root property of the config file.
    */
-  static build(config: Configuration): EnvSwitcher;
-  static build(pathToDotswitcherrc: string): EnvSwitcher;
-  static build(options: Configuration | string): EnvSwitcher {
-    if (typeof options === 'object') return new EnvSwitcher(options);
+  static build(config: Configuration): EnvShifter;
+  static build(pathToDotshifterrc: string): EnvShifter;
+  static build(options: Configuration | string): EnvShifter {
+    if (typeof options === 'object') return new EnvShifter(options);
 
     const config = getConfig(options);
 
-    return new EnvSwitcher(config);
+    return new EnvShifter(config);
   }
 
   public switch(targetPath: string, presetPath: string): void {

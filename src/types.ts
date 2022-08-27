@@ -1,5 +1,3 @@
-import { EnvSwitcher } from './switcher/env-switcher';
-
 export type GlobPattern = string;
 
 export type Tolerance =
@@ -7,7 +5,7 @@ export type Tolerance =
   | 'careful' // Missing files are ignored.
   | 'strict'; // Missing files throw an error.
 
-export type Strategy =
+export type Scope =
   | 'all' // All targets are attempted to be switched.
   | 'single'; // Only one target is switched.
 
@@ -35,7 +33,7 @@ export type Target = {
 type BaseConfig = {
   root: string;
   tolerance: Tolerance;
-  strategy: Strategy;
+  strategy: Scope;
 };
 
 type SingleTargetConfig = BaseConfig & {
